@@ -38,7 +38,8 @@ class Lecturer(Mentor):
     def __str__(self):
         print(f'Имя: {self.name}')
         print(f'Фамилия: {self.surname}')
-        print('Средняя оценка за лекции: ', mean(self.grades['Python']))
+        for count in self.courses_attached:
+            print('Средняя оценка за лекции: ', mean(self.grades[count]))
         return' '
         
 
@@ -89,5 +90,6 @@ print(student_1.grades)
 print(student_2.grades)
 print(f'Лектор {mentor_2.name} {mentor_2.surname} имеет баллы {mentor_2.grades}')
 print(f'Лектор {mentor_1.name} {mentor_1.surname} имеет баллы {mentor_1.grades}')
+print(mentor_1)
 print(mentor_2)
 print(mentor_4)
