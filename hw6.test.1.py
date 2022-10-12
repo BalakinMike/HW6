@@ -21,7 +21,7 @@ class Student:
         return grades
 
     def __str__(self) -> str:
-        return f'Имя: {self.name}\nФамилия: {self.surname}'
+        return f'Имя: {self.name}\nФамилия: {self.surname}\n{self.grades}'
 class Mentor:
     def __init__(self, name: str, surname: str):
         self.name = name
@@ -37,7 +37,6 @@ class Lector(Mentor):
         self.grades = {}
     
     def avg_grade (self):
-        #balls = [grade for grade in self.grades.values() for key in self.grades.keys()]
         balls = [item for grade in self.grades.values() for item in grade]
         avg_balls = sum(balls)/len(balls) 
         return avg_balls
@@ -51,8 +50,7 @@ class Reviewer(Mentor):
         self.courses = []
     
     def students_grades (self, student, course, grade: int):
-        
-        if (isinstance(student, Student) and course in student.courses and course in self.cours_in_progress):
+        if (isinstance(student, Student) and course in student.cours_in_progress):
             if course in student.grades:
                 student.grades[course].append(grade)
             else:
@@ -93,7 +91,7 @@ print('-'*10)
 print('Студенты:')
 print(student_1)
 print(student_2)
-
+print(student_1.grades)
 print('-'*10)
 print('Лекторы:')
 print(lector_1)
