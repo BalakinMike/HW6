@@ -6,7 +6,7 @@ class Student:
         self.cours_in_progress = []
         self.finished_course = []
         self.grades = {}
-        self.courses = []
+        
 
     def lectors_grades (self, lector, course, grade: int):
         
@@ -17,11 +17,16 @@ class Student:
                 lector.grades[course] = [grade]
     
     def avg_grade (self):
-        grades = [item for grade in self.grades.values() for item in grade]  
-        return grades
+        balls = [item for grade in self.grades.values() for item in grade]
+        avg_balls = sum(balls)/len(balls) 
+        return avg_balls
 
     def __str__(self) -> str:
-        return f'Имя: {self.name}\nФамилия: {self.surname}\n{self.grades}'
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nКурсы в процессе изучения: {self.cours_in_progress}' \
+                f'\nЗавершённые курсы: {self.finished_course}\nСредний балл за домашние работы: {self.avg_grade()}'
+
+    def __lt__(self, other):
+
 class Mentor:
     def __init__(self, name: str, surname: str):
         self.name = name
@@ -80,6 +85,11 @@ reviewer_3.students_grades(student_1, 'Python', 10)
 reviewer_3.students_grades(student_2, 'Python', 7)
 reviewer_4.students_grades(student_1, 'HTML', 6)
 reviewer_4.students_grades(student_2, 'HTML', 5)
+# Ввод второй оценки за курсы
+reviewer_3.students_grades(student_1, 'Python', 9)
+reviewer_3.students_grades(student_2, 'Python', 8)
+reviewer_4.students_grades(student_1, 'HTML', 7)
+reviewer_4.students_grades(student_2, 'HTML', 7)
 
 student_1.lectors_grades(lector_1,'Python', 10)
 student_2.lectors_grades(lector_1,'Python', 7)
@@ -91,7 +101,7 @@ print('-'*10)
 print('Студенты:')
 print(student_1)
 print(student_2)
-print(student_1.grades)
+
 print('-'*10)
 print('Лекторы:')
 print(lector_1)
@@ -101,4 +111,6 @@ print('-'*10)
 print('Проверяющие:')
 print(reviewer_3)
 print(reviewer_4)
-        
+
+print('-'*10)
+print(student_1.grades)
