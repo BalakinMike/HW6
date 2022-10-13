@@ -26,6 +26,13 @@ class Student:
                 f'\nЗавершённые курсы: {self.finished_course}\nСредний балл за домашние работы: {self.avg_grade()}'
 
     def __lt__(self, other):
+        return self.avg_grade() < other.avg_grade()
+
+    def __gt__(self, other):
+        return self.avg_grade() > other.avg_grade()
+
+    def __eq__(self, other):
+        return self.avg_grade() == other.avg_grade()
 
 class Mentor:
     def __init__(self, name: str, surname: str):
@@ -48,6 +55,16 @@ class Lector(Mentor):
     
     def __str__(self) -> str:
         return Mentor.__str__(self) + f'\nСредний балл за лекции: {self.avg_grade()}'
+
+    def __lt__(self, other):
+        return self.avg_grade() < other.avg_grade()
+
+    def __gt__(self, other):
+        return self.avg_grade() > other.avg_grade()
+
+    def __eq__(self, other):
+        return self.avg_grade() == other.avg_grade()
+
 
 class Reviewer(Mentor):
     def __init__(self, name: str, surname: str):
@@ -113,4 +130,11 @@ print(reviewer_3)
 print(reviewer_4)
 
 print('-'*10)
-print(student_1.grades)
+print(student_1 < student_2)
+print(student_1 > student_2)
+print(student_1 == student_2)
+
+print('-'*10)
+print(lector_1 < lector_2)
+print(lector_1 > lector_2)
+print(lector_1 == lector_2)
