@@ -101,11 +101,15 @@ student_2.finished_course += ['Git', 'JS']
 
 lector_1 = Lector(name='Alexander', surname='Bardin')
 lector_2 = Lector(name='Sergey', surname='Vertepov')
+lector_3 = Lector(name='Oleg', surname='Gejin')
+lector_4 = Lector(name='Luk', surname='Skywalker')
 
-lectors = [lector_1, lector_2] #Список лекторов
+lectors = [lector_1, lector_2, lector_3, lector_4] #Список лекторов
 
 lector_1.courses += ['Python']
 lector_2.courses += ['HTML']
+lector_3.courses += ['Python']
+lector_4.courses += ['HTML']
 
 reviewer_3 = Reviewer(name='Evgeny', surname='Varlamov')
 reviewer_4 = Reviewer(name='Igor', surname='Chebotar')
@@ -124,6 +128,10 @@ student_1.lectors_grades(lector_1,'Python', 10)
 student_2.lectors_grades(lector_1,'Python', 7)
 student_1.lectors_grades(lector_2,'HTML', 7)
 student_2.lectors_grades(lector_2,'HTML', 5)
+student_1.lectors_grades(lector_3,'Python', 8)
+student_2.lectors_grades(lector_3,'Python', 4)
+student_1.lectors_grades(lector_4,'HTML', 6)
+student_2.lectors_grades(lector_4,'HTML', 3)
 
 # Тестовые выводы
 print('-'*10)
@@ -135,6 +143,8 @@ print('-'*10)
 print('Лекторы:')
 print(lector_1)
 print(lector_2)
+print(lector_3)
+print(lector_4)
 
 print('-'*10)
 print('Проверяющие:')
