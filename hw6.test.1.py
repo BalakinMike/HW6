@@ -78,10 +78,20 @@ class Reviewer(Mentor):
             else:
                 student.grades[course] = [grade]
     
-
+def avg_in_course(students: list, course):
+    sum_balls = 0
+    sum_len = 0
+    for student in students:
+        balls = [item for item in student.grades[course]]
+        sum_balls += sum(balls)
+        sum_len += len(balls)
+    avg_for_course = sum_balls/sum_len
+    return avg_for_course
 
 student_1 = Student(name='Mikhail', surname='Balakin', gender='Male')
 student_2 = Student(name='Gena', surname='Krocodail', gender='Crocodail')
+
+students = [student_1, student_2] # Список студентов
 
 student_1.cours_in_progress += ['HTML', 'Python']
 student_2.cours_in_progress += ['HTML', 'Python']
@@ -91,6 +101,8 @@ student_2.finished_course += ['Git', 'JS']
 
 lector_1 = Lector(name='Alexander', surname='Bardin')
 lector_2 = Lector(name='Sergey', surname='Vertepov')
+
+lectors = [lector_1, lector_2] #Список лекторов
 
 lector_1.courses += ['Python']
 lector_2.courses += ['HTML']
@@ -130,11 +142,23 @@ print(reviewer_3)
 print(reviewer_4)
 
 print('-'*10)
-print(student_1 < student_2)
-print(student_1 > student_2)
-print(student_1 == student_2)
+if (student_1 < student_2):
+    print(f'Балл {student_1.name} {student_1.surname} меньше балла {student_2.name} {student_2.surname}')
+#print(student_1 < student_2)
+elif (student_1 > student_2):
+    print(f'Балл {student_1.name} {student_1.surname} больше балла {student_2.name} {student_2.surname}')
+
+#print(student_1 > student_2)
+elif (student_1 == student_2):
+    print(f'Балл {student_1.name} {student_1.surname} равен баллу {student_2.name} {student_2.surname}')
+
+#print(student_1 == student_2)
 
 print('-'*10)
 print(lector_1 < lector_2)
 print(lector_1 > lector_2)
 print(lector_1 == lector_2)
+
+print('-'*10)
+print ('Средний балл студентов за курс Python: ', avg_in_course(students, 'Python'))
+print ('Средний балл студентов за курс HTML: ', avg_in_course(students, 'HTML'))
