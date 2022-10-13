@@ -88,6 +88,17 @@ def avg_in_course(students: list, course):
     avg_for_course = sum_balls/sum_len
     return avg_for_course
 
+def avg_lector_course(lectors: list, course):
+    sum_balls = 0
+    sum_len = 0
+    for lector in lectors:
+        if course in lector.courses:
+            balls = [item for item in lector.grades[course]]
+            sum_balls += sum(balls)
+            sum_len += len(balls)
+    avg_for_course = sum_balls/sum_len
+    return avg_for_course
+    
 student_1 = Student(name='Mikhail', surname='Balakin', gender='Male')
 student_2 = Student(name='Gena', surname='Krocodail', gender='Crocodail')
 
@@ -151,24 +162,26 @@ print('Проверяющие:')
 print(reviewer_3)
 print(reviewer_4)
 
+#Процедура сравнения студентов
 print('-'*10)
 if (student_1 < student_2):
     print(f'Балл {student_1.name} {student_1.surname} меньше балла {student_2.name} {student_2.surname}')
-#print(student_1 < student_2)
 elif (student_1 > student_2):
     print(f'Балл {student_1.name} {student_1.surname} больше балла {student_2.name} {student_2.surname}')
-
-#print(student_1 > student_2)
 elif (student_1 == student_2):
     print(f'Балл {student_1.name} {student_1.surname} равен баллу {student_2.name} {student_2.surname}')
 
-#print(student_1 == student_2)
-
+#Процедура сравнения лекторов (без вывода комментариев)
 print('-'*10)
 print(lector_1 < lector_2)
 print(lector_1 > lector_2)
 print(lector_1 == lector_2)
 
+#Процедура вывода среднего балла студентов по курсу
 print('-'*10)
 print ('Средний балл студентов за курс Python: ', avg_in_course(students, 'Python'))
 print ('Средний балл студентов за курс HTML: ', avg_in_course(students, 'HTML'))
+
+print('-'*10)
+print('Средний балл лекторов за курс Python: ', avg_lector_course(lectors, 'Python'))
+print('Средний балл лекторов за курс HTML: ', avg_lector_course(lectors, 'HTML'))
